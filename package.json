@@ -1,0 +1,17 @@
+{
+  "name": "hawa",
+  "version": "1.0.0",
+  "description": "hawa is a static site generator for minimalistic blogging",
+  "license": "MIT",
+  "author": "Kshitij Sharma",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "handlebars": "^4.7.10",
+    "marked": "^18.1.1"
+  }
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}} - Post Template</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  <script src="../assets/scripts.js"></script>
+</head>
+
+<body>
+
+  <a href="#main-content" class="skip-link" tabindex="0">Skip to main content</a>
+
+  <header class="site-header">
+    <nav aria-label="Site Navigation">
+      <a href="/" class="brand" tabindex="0">Post Template</a>
+      <button type="button" id="theme-toggle" class="theme-btn" tabindex="0"
+        aria-label="Switch between light and dark theme">
+        &#9790; Dark
+      </button>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <article>
+      <header>
+        <time datetime="{{ date }}">{{ dateString }} &bull; {{ readTime }}</time>
+        <h1>{{ title }}</h1>
+      </header>
+
+			{{{ content }}}
+
+    </article>
+
+    <section aria-labelledby="related-heading">
+      <hr>
+      <h2 id="related-heading">Related Posts</h2>
+      <ul>
+        <li><a href="post.html" tabindex="0">Building Fast APIs with Minimal Dependencies</a></li>
+        <li><a href="post.html" tabindex="0">Why Simplicity Matters in Software Architecture</a></li>
+      </ul>
+    </section>
+
+    <nav aria-label="Post Navigation">
+      <a href="post.html" rel="prev" tabindex="0">&larr; Previous Post</a>
+      <a href="post.html" rel="next" tabindex="0">Next Post &rarr;</a>
+    </nav>
+  </main>
+
+</body>
+
+</html>

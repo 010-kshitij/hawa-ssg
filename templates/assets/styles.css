@@ -1,0 +1,431 @@
+/* ==========================================================================
+   progshala.in - Long-Form Accessible Reading Stylesheet with Full-Width Header
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 1. Theme Variables */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --text-muted: #595959;
+  --heading-color: #111111;
+  --paragraph-color: #24292f;
+  --link-color: #0969da;
+  --link-hover: #054da7;
+  --link-visited: #6e40c9;
+  --border-color: #d0d7de;
+  --border-light: #eaeaea;
+  --surface-bg: #f6f8fa;
+  --code-bg: #f3f4f6;
+  --focus-ring: #0969da;
+  --focus-contrast: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-color: #0d1117;
+    --text-color: #e6edf3;
+    --text-muted: #8b949e;
+    --heading-color: #f0f6fc;
+    --paragraph-color: #c9d1d9;
+    --link-color: #58a6ff;
+    --link-hover: #79c0ff;
+    --link-visited: #bc8cff;
+    --border-color: #30363d;
+    --border-light: #21262d;
+    --surface-bg: #161b22;
+    --code-bg: #1f242c;
+    --focus-ring: #58a6ff;
+    --focus-contrast: #0d1117;
+  }
+}
+
+[data-theme="dark"] {
+  --bg-color: #0d1117;
+  --text-color: #e6edf3;
+  --text-muted: #8b949e;
+  --heading-color: #f0f6fc;
+  --paragraph-color: #c9d1d9;
+  --link-color: #58a6ff;
+  --link-hover: #79c0ff;
+  --link-visited: #bc8cff;
+  --border-color: #30363d;
+  --border-light: #21262d;
+  --surface-bg: #161b22;
+  --code-bg: #1f242c;
+  --focus-ring: #58a6ff;
+  --focus-contrast: #0d1117;
+}
+
+[data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --text-muted: #595959;
+  --heading-color: #111111;
+  --paragraph-color: #24292f;
+  --link-color: #0969da;
+  --link-hover: #054da7;
+  --link-visited: #6e40c9;
+  --border-color: #d0d7de;
+  --border-light: #eaeaea;
+  --surface-bg: #f6f8fa;
+  --code-bg: #f3f4f6;
+  --focus-ring: #0969da;
+  --focus-contrast: #ffffff;
+}
+
+/* 2. Base Document Typography (Full width, no max-width on body) */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  margin: 0;
+  padding: 0;
+  word-wrap: break-word;
+}
+
+/* 3. Skip Link */
+.skip-link {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  transform: translateY(-200%);
+  transition: transform 0.15s ease-out;
+  background: var(--heading-color);
+  color: var(--bg-color) !important;
+  padding: 0.75rem 1.25rem;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 4px;
+  z-index: 10000;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* 4. Global Keyboard Focus Indicator */
+:focus-visible,
+:focus {
+  outline: 3px solid var(--focus-ring) !important;
+  outline-offset: 2px !important;
+  position: relative;
+  z-index: 10;
+}
+
+a:focus-visible,
+a:focus,
+button:focus-visible,
+button:focus {
+  border-radius: 3px;
+}
+
+/* 5. Links */
+a {
+  color: var(--link-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+
+a:hover {
+  color: var(--link-hover);
+  text-decoration-thickness: 2.5px;
+}
+
+a:visited {
+  color: var(--link-visited);
+}
+
+/* 6. Site Header (Stretches 100% full-width with bottom border) */
+header.site-header {
+  width: 100%;
+  border-bottom: 1px solid var(--border-color);
+  padding: 1.25rem 0;
+}
+
+/* Inner nav centers content to max 700px */
+header.site-header nav {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header.site-header nav a.brand {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--heading-color);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  display: inline-block;
+  min-height: 44px;
+  line-height: 44px;
+}
+
+header.site-header nav a.brand:hover {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+
+header.site-header nav a.brand:visited {
+  color: var(--heading-color);
+}
+
+.theme-btn {
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-color);
+  background-color: var(--surface-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0 0.85rem;
+  min-height: 44px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-btn:hover {
+  border-color: var(--text-muted);
+}
+
+/* 7. Main Landmarks & Headings (Constrained to 700px centered) */
+main {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2.75rem 1.25rem;
+}
+
+h1 {
+  font-size: 2.15rem;
+  font-weight: 750;
+  line-height: 1.25;
+  margin: 0 0 1.5rem 0;
+  color: var(--heading-color);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 2.5rem 0 0.85rem 0;
+  color: var(--heading-color);
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 2rem 0 0.65rem 0;
+  color: var(--heading-color);
+}
+
+p {
+  margin: 0 0 1.5rem 0;
+  color: var(--paragraph-color);
+}
+
+time {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 0.45rem;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border-color);
+  margin: 3rem 0;
+}
+
+/* 8. Lists */
+ul, ol {
+  margin: 0 0 1.75rem 0;
+  padding-left: 1.75rem;
+}
+
+li {
+  margin-bottom: 0.65rem;
+  color: var(--paragraph-color);
+}
+
+/* Post Feed */
+main > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 3.5rem 0;
+}
+
+main > ul > li {
+  margin-bottom: 2.25rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+main > ul > li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+main > ul > li h2 {
+  font-size: 1.35rem;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.35;
+}
+
+/* 9. Code Snippets & Inline Code */
+:not(pre) > code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.875em;
+  color: var(--text-color);
+  background-color: var(--code-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 0.15em 0.35em;
+  white-space: break-spaces;
+  word-break: break-word;
+}
+
+pre {
+  background: var(--surface-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 1.15rem;
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  margin: 1.75rem 0;
+  color: var(--text-color);
+}
+
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* 10. Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 1.05rem;
+}
+
+caption {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  text-align: left;
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+
+th, td {
+  border: 1px solid var(--border-color);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  color: var(--paragraph-color);
+}
+
+th {
+  background-color: var(--surface-bg);
+  font-weight: 600;
+  color: var(--heading-color);
+}
+
+/* 11. Media */
+figure {
+  margin: 2rem 0;
+}
+
+figcaption {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 0.6rem;
+}
+
+img, video, audio {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.75rem 0;
+  border-radius: 6px;
+}
+
+img {
+  border: 1px solid var(--border-color);
+}
+
+audio {
+  width: 100%;
+}
+
+/* 12. Pagination & Post Navigation */
+main nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--border-color);
+  font-size: 1rem;
+}
+
+main nav a,
+main nav span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  min-width: 46px;
+  padding: 0 1rem;
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  box-sizing: border-box;
+}
+
+main nav a:hover {
+  background-color: var(--surface-bg);
+  border-color: var(--text-muted);
+  text-decoration: underline;
+}
+
+main nav a:visited {
+  color: var(--text-color);
+}
+
+main nav span[aria-current="page"] {
+  background-color: var(--heading-color);
+  color: var(--bg-color);
+  border-color: var(--heading-color);
+  font-weight: 600;
+}
+
+main nav span[aria-disabled="true"] {
+  color: var(--text-muted);
+  background-color: var(--surface-bg);
+  border-color: var(--border-color);
+  cursor: not-allowed;
+}
